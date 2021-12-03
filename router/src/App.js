@@ -1,16 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import Layout from './components/Layout';
+import About from './components/About';
+import Home from './components/Home';
+import Dashboard from './components/Dashboard';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  // De forma similar a componentDidMount y componentDidUpdate
-  useEffect(() => {
-    // Actualiza el título del documento usando la API del navegador
-    document.title = `You clicked ${count} times`;
-  }, [count]);
-
   return (
     <div className="App">
       <header className="App-header">
@@ -26,10 +23,14 @@ function App() {
         >
           Learn React
         </a>
-        <p>You clicked {count} times</p>
-        <button onClick={() => setCount(count + 1)}>
-          Click me
-        </button>
+
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="dashboard" element={<Dashboard />} />
+          </Route>
+        </Routes>
       </header>
     </div>
   );
