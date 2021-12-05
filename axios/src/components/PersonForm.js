@@ -29,7 +29,7 @@ export default class PersonForm extends React.Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Person Name: 
+                        Person Name:
                         <input type="text" name="name" onChange={this.handleChange} />
                     </label>
                     <button type="submit">Add</button>
