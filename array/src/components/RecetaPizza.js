@@ -21,7 +21,7 @@ export default class RecetaPizza extends React.Component {
                     {
                         receta.ingredientes.map((ingrediente) => {
                             return (
-                                <li style={{ width: '110px', textAlign: 'start' }} >
+                                <li key={ingrediente} style={{ width: '110px', textAlign: 'start' }} >
                                     {ingrediente}
                                 </li>
                             )
