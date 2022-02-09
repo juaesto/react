@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 export default class TaskForm extends Component {
 
-    API = 'https://localhost:44309/DailyTask';
+    API = 'https://localhost:5001/DailyTask';
 
     constructor() {
         super();
@@ -11,7 +11,7 @@ export default class TaskForm extends Component {
         this.state = {
             title: '',
             description: '',
-            _id: '',
+            id: '',
             tasks: []
         };
 
@@ -28,41 +28,40 @@ export default class TaskForm extends Component {
 
     addTask(e) {
         e.preventDefault();
-        if (this.state._id) {
-            fetch(`${this.API}/${this.state._id}`, {
+        if (this.state.id) {
+            fetch(`${this.API}/${this.state.id}`, {
                 method: 'PUT',
                 body: JSON.stringify({
-                    title: this.state.title,
-                    description: this.state.description
+                    Title: this.state.title,
+                    Description: this.state.description,
+                    Id: this.state.id
                 }),
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    window.M.toast({ html: 'Task Actualizada' });
-                    this.setState({ _id: '', title: '', description: '' });
-                    this.fetchTasks();
-                });
+            }).then(data => {
+                window.M.toast({ html: 'Task Actualizada' });
+                this.setState({ id: '', title: '', description: '' });
+                this.fetchTasks();
+            });
         } else {
             fetch(this.API, {
                 method: 'POST',
-                body: JSON.stringify(this.state),
+                body: JSON.stringify({
+                    Title: this.state.title,
+                    Description: this.state.description
+                }),
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    window.M.toast({ html: 'Task Guardada' });
-                    this.setState({ title: '', description: '' });
-                    this.fetchTasks();
-                })
-                .catch(err => console.error(err));
+            }).then(data => {
+                console.log(data);
+                window.M.toast({ html: 'Task Guardada' });
+                // this.setState({ title: '', description: '', id: '', tasks: [] });
+                this.fetchTasks();
+            }).catch(err => console.error(err));
         }
     }
 
@@ -74,13 +73,11 @@ export default class TaskForm extends Component {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    window.M.toast({ html: 'Task eliminada' });
-                    this.fetchTasks();
-                });
+            }).then(data => {
+                console.log(data);
+                window.M.toast({ html: 'Task eliminada' });
+                this.fetchTasks();
+            });
         }
     }
 
@@ -92,7 +89,7 @@ export default class TaskForm extends Component {
                 this.setState({
                     title: data.title,
                     description: data.description,
-                    _id: data._id
+                    id: data.id
                 });
             });
     }
@@ -158,14 +155,14 @@ export default class TaskForm extends Component {
                                     {
                                         this.state.tasks.map(task => {
                                             return (
-                                                <tr key={task._id}>
+                                                <tr key={task.id}>
                                                     <td>{task.title}</td>
                                                     <td>{task.description}</td>
                                                     <td>
-                                                        <button onClick={() => this.deleteTask(task._id)} className="btn light-blue darken-4">
+                                                        <button onClick={() => this.deleteTask(task.id)} className="btn light-blue darken-4">
                                                             <i className="material-icons">delete</i>
                                                         </button>
-                                                        <button onClick={() => this.editTask(task._id)} className="btn light-blue darken-4" style={{ margin: '4px' }}>
+                                                        <button onClick={() => this.editTask(task.id)} className="btn light-blue darken-4" style={{ margin: '4px' }}>
                                                             <i className="material-icons">edit</i>
                                                         </button>
                                                     </td>

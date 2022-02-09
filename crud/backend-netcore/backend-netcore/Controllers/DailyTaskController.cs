@@ -27,6 +27,12 @@ namespace backend_netcore.Controllers
 			return await Context.DailyTasks.ToListAsync();
 		}
 
+		[HttpGet("{id:int}")]
+		public async Task<ActionResult<DailyTask>> Get(int id)
+		{
+			return await Context.DailyTasks.FirstOrDefaultAsync(x => x.Id == id);
+		}
+
 		[HttpPost]
 		public async Task<ActionResult> Post(DailyTask task)
 		{

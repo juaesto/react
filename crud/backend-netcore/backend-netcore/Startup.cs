@@ -29,6 +29,19 @@ namespace backend_netcore
 			//Configurando la conexión a la BD y el contexto de datos
 			services.AddDbContext<DailyTaskDbContext>(options =>
 				options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+
+			//Configurando CORS
+			services.AddCors(options =>
+			{
+				options.AddPolicy("AllowAll",
+					builder =>
+					{
+						builder
+						.AllowAnyOrigin()
+						.AllowAnyMethod()
+						.AllowAnyHeader();
+					});
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +59,8 @@ namespace backend_netcore
 			app.UseRouting();
 
 			app.UseAuthorization();
+
+			app.UseCors("AllowAll");
 
 			app.UseEndpoints(endpoints =>
 			{
