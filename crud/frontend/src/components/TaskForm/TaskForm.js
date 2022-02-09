@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 export default class TaskForm extends Component {
 
-    API = 'https://localhost:44309/DailyTask';
+    API = 'http://localhost:4000/Tasks';
 
     constructor() {
         super();
