@@ -3,15 +3,31 @@ import TextField from '@mui/material/TextField';
 import * as React from 'react';
 
 export default function AutocompleteTest() {
+    const [value, setValue] = React.useState(top100Films[0]);
+    const [inputValue, setInputValue] = React.useState('');
+
     return (
-        <div style={{marginTop: "20px"}}>
-            <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={top100Films}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="Movie" />}
-            />
+        <div style={{ marginTop: '20px' }}>
+            <div style={{color: 'black'}}>{`value: ${value !== null ? `'${value.label} -  ${value.year}'` : 'null'}`}</div>
+            <div style={{color: 'black'}}>{`inputValue: '${inputValue}'`}</div>
+            <br />
+            <div style={{ marginTop: '20px' }}>
+                <Autocomplete
+                    value={value}
+                    onChange={(event, newValue) => {
+                        setValue(newValue);
+                    }}
+                    inputValue={inputValue}
+                    onInputChange={(event, newInputValue) => {
+                        setInputValue(newInputValue);
+                    }}
+                    disablePortal
+                    id="combo-box-demo"
+                    options={top100Films}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Movie" />}
+                />
+            </div>
         </div>
     );
 }
