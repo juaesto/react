@@ -11383,12 +11383,12 @@
 }
 .dx-colorview-palette-gradient-white {
   background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear,right top,left top,from(rgba(255,255,255,0)),to(white));
+  background-image: -webkit-gradient(linear,right top,left top,from(rgba(255,255,255,0)),to(#fff));
   background-image: linear-gradient(270deg,rgba(255,255,255,0),#fff);
 }
 .dx-colorview-palette-gradient-black {
   background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0)),to(black));
+  background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0)),to(#000));
   background-image: linear-gradient(180deg,rgba(0,0,0,0),#000);
 }
 .dx-colorview-palette {
@@ -16718,7 +16718,7 @@ input.dx-hidden {
   -ms-flex-direction: column;
   flex-direction: column;
 }
-.dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container.dx-layout-2 .dx-row:nth-child(1) {
+.dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container.dx-layout-2 .dx-row:first-child {
   -webkit-box-flex: 3;
   -webkit-flex-grow: 3;
   -ms-flex-positive: 3;
@@ -16766,7 +16766,7 @@ input.dx-hidden {
   flex-direction: row;
   height: 0;
 }
-.dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container .dx-row:nth-child(1) {
+.dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container .dx-row:first-child {
   -webkit-box-flex: 2;
   -webkit-flex-grow: 2;
   -ms-flex-positive: 2;
@@ -19795,7 +19795,7 @@ input.dx-hidden {
   width: 32.5px;
   font-size: 14px;
 }
-.dx-scheduler-time-panel .dx-scheduler-time-panel-row:nth-child(1) td > div,
+.dx-scheduler-time-panel .dx-scheduler-time-panel-row:first-child td > div,
 .dx-scheduler-time-panel .dx-scheduler-virtual-row ~ .dx-scheduler-time-panel-row:nth-child(2) td > div {
   margin-top: 0;
 }

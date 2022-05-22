@@ -43,6 +43,18 @@
                 "responses": {}
             }
         },
+        "/tasks": {
+            "get": {
+                "x-swagger-router-controller": "users",
+                "operationId": "impossible",
+                "tags": [
+                    "/tasks"
+                ],
+                "description": "",
+                "parameters": [],
+                "responses": {}
+            }
+        },
         "/users": {
             "get": {
                 "x-swagger-router-controller": "users",
