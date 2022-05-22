@@ -110,3 +110,8 @@ crud/backend-netcore/.vs/backend-netcore/DesignTimeBuild/.dtbcache.v2
 ejercicios/ej1/instrucciones.txt
 /crud/backend-netcore/.vs
 /crud/backend-netcore/.vs
+/crud/netcore/backend/backend-netcore/obj
+/crud/netcore/backend/backend-netcore/bin
+/crud/netcore/backend-jwt/backend-jwt/obj
+/crud/netcore/backend-jwt/backend-jwt/bin
+/crud/netcore/backend-jwt/.vs
