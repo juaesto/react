@@ -7,7 +7,7 @@ export default class PersonList extends React.Component {
     }
 
     componentDidMount() {
-        API.get(`https://jsonplaceholder.typicode.com/users`)
+        API.get(`/users`)
             .then(res => {
                 const persons = res.data;
                 this.setState({ persons });
