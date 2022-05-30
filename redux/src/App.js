@@ -29,10 +29,12 @@ class App extends Component {
   }
 }
 
+//Recupera el estado del store
 const mapStateToProps = state => ({
   ...state
 });
 
+//Recupera las acciones y las envía al store
 const mapDispatchToProps = dispatch => ({
   startAction: () => dispatch(startAction),
   stopAction: () => dispatch(stopAction)
