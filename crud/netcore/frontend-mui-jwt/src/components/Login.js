@@ -20,6 +20,11 @@ export default class Login extends Component {
             user: null
         };
     }
+
+    componentDidMount() {
+        user = undefined;
+    }
+
     onChangeUsername(e) {
         this.setState({
             username: e.target.value
