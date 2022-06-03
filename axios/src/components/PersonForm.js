@@ -17,7 +17,7 @@ export default class PersonForm extends React.Component {
             name: this.state.name
         };
 
-        API.post(`https://jsonplaceholder.typicode.com/users`, { user })
+        API.post(`/users`, { user })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
